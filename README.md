@@ -1,16 +1,7 @@
-# event_management
+# Task_management Final Project 
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Group:10
+Member 1: Tasfiq Jahid (1931203)
+Member 2: Sakibul Hasan Shato (2031033)
+Member 3 : Faysal Ahmed Apu (2021926)
+Member 4 : Umme Samira Jannat (1910567)
