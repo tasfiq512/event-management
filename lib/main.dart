@@ -1,7 +1,7 @@
 import 'package:event_management/services/notification_service.dart';
-import 'package:ems/utils/app_constants.dart';
-import 'package:ems/views/bottom_nav_bar/bottom_bar_view.dart';
-import 'package:ems/views/onboarding_screen.dart';
+import 'package:event_management/utils/app_constants.dart';
+import 'package:event_management/views/bottom_nav_bar/bottom_bar_view.dart';
+import 'package:event_management/views/onboarding_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
