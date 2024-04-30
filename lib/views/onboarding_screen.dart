@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'auth/login_signup.dart';
+import 'package:event_management/views/auth/login_signup.dart';
 
 class OnBoardingScreen extends StatelessWidget {
 
