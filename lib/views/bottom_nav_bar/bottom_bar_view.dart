@@ -3,7 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../services/notification_service.dart';
+//import '../../services/notification_service.dart';
 import '../community/community.dart';
 import '../home/home_screen.dart';
 import '../profile/profile.dart';
@@ -11,7 +11,7 @@ import 'create_event.dart';
 import 'message_screen.dart';
 
 class BottomBarView extends StatefulWidget {
-  BottomBarView({Key? key}) : super(key: key);
+  const BottomBarView({super.key});
 
   @override
   State<BottomBarView> createState() => _BottomBarViewState();
@@ -27,11 +27,11 @@ class _BottomBarViewState extends State<BottomBarView> {
   }
 
   List<Widget> widgetOption = [
-    HomeScreen(),
-    CommunityScreen(),
-    CreateEventView(),
-    MessageScreen(),
-    ProfileScreen()
+    const HomeScreen(),
+    const CommunityScreen(),
+    const CreateEventView(),
+    const MessageScreen(),
+    const ProfileScreen()
   ];
 
   @override
@@ -42,10 +42,10 @@ class _BottomBarViewState extends State<BottomBarView> {
     FirebaseMessaging.instance.getInitialMessage();
     FirebaseMessaging.onMessage.listen((message) {
 
-      LocalNotificationService.display(message);
+      //LocalNotificationService.display(message);
     });
 
-    LocalNotificationService.storeToken();
+   // LocalNotificationService.storeToken();
   }
 
 
@@ -64,7 +64,7 @@ class _BottomBarViewState extends State<BottomBarView> {
             items: [
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: Image.asset(
                       currentIndex == 0
                           ? 'assets/Group 43 (1).png'
@@ -76,7 +76,7 @@ class _BottomBarViewState extends State<BottomBarView> {
                   label: ''),
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: Image.asset(
                       currentIndex == 1
                           ? 'assets/Group 18340 (1).png'
@@ -88,7 +88,7 @@ class _BottomBarViewState extends State<BottomBarView> {
                   label: ''),
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: Image.asset(
                         currentIndex == 2
                             ? 'assets/Group 18528 (1).png'
@@ -99,7 +99,7 @@ class _BottomBarViewState extends State<BottomBarView> {
                   label: ''),
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: Image.asset(
                         currentIndex == 3
                             ? 'assets/Group 18339 (1).png'
@@ -110,7 +110,7 @@ class _BottomBarViewState extends State<BottomBarView> {
                   label: ''),
               BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: const EdgeInsets.only(top: 5),
                     child: Image.asset(
                       currentIndex == 4
                           ? 'assets/Group 18341 (1).png'

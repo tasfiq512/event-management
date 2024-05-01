@@ -24,7 +24,7 @@ class AuthController extends GetxController {
       /// Login Success
 
       isLoading(false);
-      Get.to(() => BottomBarView());
+      Get.to(() => const BottomBarView());
     }).catchError((e) {
       isLoading(false);
       Get.snackbar('Error', "$e");
@@ -46,7 +46,7 @@ class AuthController extends GetxController {
       isLoading(false);
 
       /// Navigate user to profile screen
-      Get.to(() => ProfileScreen());
+      Get.to(() => const ProfileScreen());
     }).catchError((e) {
       /// print error information
       print("Error in authentication $e");
@@ -83,7 +83,7 @@ class AuthController extends GetxController {
       isLoading(false);
 
       ///SuccessFull loged in
-      Get.to(() => BottomBarView());
+      Get.to(() => const BottomBarView());
     }).catchError((e) {
       /// Error in getting Login
       isLoading(false);
@@ -127,7 +127,7 @@ class AuthController extends GetxController {
       'gender': gender
     }).then((value) {
       isProfileInformationLoading(false);
-      Get.offAll(()=> BottomBarView());
+      Get.offAll(()=> const BottomBarView());
     });
 
   }

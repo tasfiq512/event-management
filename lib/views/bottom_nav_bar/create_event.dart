@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -15,7 +14,7 @@ import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
 
 class CreateEventView extends StatefulWidget {
-  CreateEventView({Key? key}) : super(key: key);
+  const CreateEventView({super.key});
 
   @override
   State<CreateEventView> createState() => _CreateEventViewState();
@@ -35,8 +34,8 @@ class _CreateEventViewState extends State<CreateEventView> {
   TextEditingController endTimeController = TextEditingController();
   TextEditingController startTimeController = TextEditingController();
   TextEditingController frequencyEventController = TextEditingController();
-  TimeOfDay startTime = TimeOfDay(hour: 0, minute: 0);
-  TimeOfDay endTime = TimeOfDay(hour: 0, minute: 0);
+  TimeOfDay startTime = const TimeOfDay(hour: 0, minute: 0);
+  TimeOfDay endTime = const TimeOfDay(hour: 0, minute: 0);
 
   var selectedFrequency = -2;
 
@@ -52,8 +51,8 @@ class _CreateEventViewState extends State<CreateEventView> {
     endTimeController.clear();
     startTimeController.clear();
     frequencyEventController.clear();
-    startTime = TimeOfDay(hour: 0, minute: 0);
-    endTime = TimeOfDay(hour: 0, minute: 0);
+    startTime = const TimeOfDay(hour: 0, minute: 0);
+    endTime = const TimeOfDay(hour: 0, minute: 0);
     setState(() {});
   }
 
@@ -139,7 +138,7 @@ class _CreateEventViewState extends State<CreateEventView> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: formKey,
             child: Column(
@@ -153,7 +152,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       width: 90,
                       height: 33,
                       decoration: BoxDecoration(
@@ -211,7 +210,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                   child: DottedBorder(
                     color: AppColors.border,
                     strokeWidth: 1.5,
-                    dashPattern: [6, 6],
+                    dashPattern: const [6, 6],
                     child: Container(
                       alignment: Alignment.center,
                       child: Column(
@@ -221,7 +220,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                           SizedBox(
                             height: Get.height * 0.05,
                           ),
-                          Container(
+                          SizedBox(
                             width: 76,
                             height: 59,
                             child: Image.asset('assets/uploadIcon.png'),
@@ -234,7 +233,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           elevatedButton(
@@ -247,15 +246,15 @@ class _CreateEventViewState extends State<CreateEventView> {
                     ),
                   ),
                 ),
-                media.length == 0
+                media.isEmpty
                     ? Container()
-                    : SizedBox(
+                    : const SizedBox(
                   height: 20,
                 ),
 
-                media.length == 0
+                media.isEmpty
                     ? Container()
-                    : Container(
+                    : SizedBox(
                   width: Get.width,
                   height: Get.width * 0.3,
                   child: ListView.builder(
@@ -266,7 +265,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                               ? Container(
                             width: Get.width * 0.3,
                             height: Get.width * 0.3,
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                                 right: 15, bottom: 10, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
@@ -283,7 +282,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                   MainAxisAlignment.end,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       child: CircleAvatar(
                                         child: IconButton(
                                           onPressed: () {
@@ -293,13 +292,13 @@ class _CreateEventViewState extends State<CreateEventView> {
                                             // thumbnail.removeAt(i);
                                             setState(() {});
                                           },
-                                          icon: Icon(Icons.close),
+                                          icon: const Icon(Icons.close),
                                         ),
                                       ),
                                     )
                                   ],
                                 ),
-                                Align(
+                                const Align(
                                   alignment: Alignment.center,
                                   child: Icon(
                                     Icons.slow_motion_video_rounded,
@@ -313,7 +312,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                               : Container(
                             width: Get.width * 0.3,
                             height: Get.width * 0.3,
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                                 right: 15, bottom: 10, top: 10),
                             decoration: BoxDecoration(
                               image: DecorationImage(
@@ -328,7 +327,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                               MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   child: CircleAvatar(
                                     child: IconButton(
                                       onPressed: () {
@@ -337,7 +336,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                         // thumbnail.removeAt(i);
                                         setState(() {});
                                       },
-                                      icon: Icon(Icons.close),
+                                      icon: const Icon(Icons.close),
                                     ),
                                   ),
                                 )
@@ -349,7 +348,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                       scrollDirection: Axis.horizontal),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 myTextField(
@@ -375,7 +374,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                       return null;
                     }),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 myTextField(
@@ -399,7 +398,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                       }
                       return null;
                     }),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -440,7 +439,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                         }),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -461,7 +460,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                       return null;
                     }),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -478,7 +477,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                         return Container(
                           width: double.infinity,
                           height: Get.width * 0.6,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(10),
@@ -492,7 +491,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                 children: [
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 5,
                                   ),
                                   Expanded(
@@ -503,7 +502,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                           state(() {});
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 5, vertical: 10),
                                           decoration: BoxDecoration(
                                             color: selectedFrequency == -1
@@ -524,7 +523,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                       )),
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 5,
                                   ),
                                   Expanded(
@@ -535,7 +534,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                           state(() {});
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 5, vertical: 10),
                                           decoration: BoxDecoration(
                                             color: selectedFrequency == 0
@@ -556,7 +555,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                       )),
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 10,
                                   ),
                                   Expanded(
@@ -567,7 +566,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                           });
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 5, vertical: 10),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(10),
@@ -588,7 +587,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                       )),
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 10,
                                   ),
 
@@ -601,7 +600,7 @@ class _CreateEventViewState extends State<CreateEventView> {
 
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 10,
                                   ),
                                   Expanded(
@@ -612,7 +611,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                           });
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 5, vertical: 10),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(10),
@@ -633,13 +632,13 @@ class _CreateEventViewState extends State<CreateEventView> {
                                       )),
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 10,
                                   ),
                                   Expanded(
                                       child: InkWell(
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 5, vertical: 10),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(10),
@@ -665,7 +664,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                                       )),
                                   selectedFrequency == 10
                                       ? Container()
-                                      : SizedBox(
+                                      : const SizedBox(
                                     width: 5,
                                   ),
                                 ],
@@ -689,11 +688,11 @@ class _CreateEventViewState extends State<CreateEventView> {
                                           : 'Yearly';
                                       Get.back();
                                     },
-                                    child: Text(
+                                    color: Colors.blue,
+                                    child: const Text(
                                       "Select",
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    color: Colors.blue,
                                   )
                                 ],
                               ),
@@ -713,8 +712,8 @@ class _CreateEventViewState extends State<CreateEventView> {
                     },
                     controller: frequencyEventController,
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(top: 3),
-                      errorStyle: TextStyle(fontSize: 0),
+                      contentPadding: const EdgeInsets.only(top: 3),
+                      errorStyle: const TextStyle(fontSize: 0),
                       hintStyle: TextStyle(
                         color: AppColors.genderTextColor,
                       ),
@@ -742,7 +741,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                 //       }
                 //     }
                 // ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -768,20 +767,20 @@ class _CreateEventViewState extends State<CreateEventView> {
                         }),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   children: [
                     myText(
                         text: 'Description/Instruction',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -804,7 +803,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                     },
                     decoration: InputDecoration(border: InputBorder.none,
                       contentPadding:
-                      EdgeInsets.only(top: 25, left: 15, right: 15),
+                      const EdgeInsets.only(top: 25, left: 15, right: 15),
                       hintStyle: TextStyle(
                         color: AppColors.genderTextColor,
                       ),
@@ -823,7 +822,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                   alignment: Alignment.topLeft,
                   child: myText(
                     text: 'Who can invite?',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
                     ),
@@ -837,7 +836,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       width: 150,
                       height: 40,
                       decoration: BoxDecoration(
@@ -877,7 +876,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                             value: value,
                             child: Text(
                               value,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffA6A6A6),
@@ -908,10 +907,10 @@ class _CreateEventViewState extends State<CreateEventView> {
                   height: Get.height * 0.03,
                 ),
                 Obx(() => isCreatingEvent.value
-                    ? Center(
+                    ? const Center(
                   child: CircularProgressIndicator(),
                 )
-                    : Container(
+                    : SizedBox(
                   height: 42,
                   width: double.infinity,
 
@@ -1024,9 +1023,9 @@ class _CreateEventViewState extends State<CreateEventView> {
   }
 
   getImageDialog(ImageSource source) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     // Pick an image
-    final XFile? image = await _picker.pickImage(
+    final XFile? image = await picker.pickImage(
       source: source,
     );
 
@@ -1044,9 +1043,9 @@ class _CreateEventViewState extends State<CreateEventView> {
   }
 
   getVideoDialog(ImageSource source) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     // Pick an image
-    final XFile? video = await _picker.pickVideo(
+    final XFile? video = await picker.pickVideo(
       source: source,
     );
 
@@ -1081,7 +1080,7 @@ class _CreateEventViewState extends State<CreateEventView> {
     showDialog(
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Select Media Type"),
+            title: const Text("Select Media Type"),
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -1090,13 +1089,13 @@ class _CreateEventViewState extends State<CreateEventView> {
                       Navigator.pop(context);
                       imageDialog(context, true);
                     },
-                    icon: Icon(Icons.image)),
+                    icon: const Icon(Icons.image)),
                 IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                       imageDialog(context, false);
                     },
-                    icon: Icon(Icons.slow_motion_video_outlined)),
+                    icon: const Icon(Icons.slow_motion_video_outlined)),
               ],
             ),
           );
@@ -1108,7 +1107,7 @@ class _CreateEventViewState extends State<CreateEventView> {
     showDialog(
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Media Source"),
+            title: const Text("Media Source"),
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -1120,7 +1119,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                         getVideoDialog(ImageSource.gallery);
                       }
                     },
-                    icon: Icon(Icons.image)),
+                    icon: const Icon(Icons.image)),
                 IconButton(
                     onPressed: () {
                       if (image) {
@@ -1129,7 +1128,7 @@ class _CreateEventViewState extends State<CreateEventView> {
                         getVideoDialog(ImageSource.camera);
                       }
                     },
-                    icon: Icon(Icons.camera_alt)),
+                    icon: const Icon(Icons.camera_alt)),
               ],
             ),
           );

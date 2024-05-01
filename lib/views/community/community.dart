@@ -1,9 +1,6 @@
-import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_management/controller/data_controller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +10,8 @@ import '../../widgets/my_widgets.dart';
 
 
 class CommunityScreen extends StatefulWidget {
+  const CommunityScreen({super.key});
+
   @override
   _CommunityScreenState createState() => _CommunityScreenState();
 }
@@ -32,7 +31,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         child: Container(
           width: double.infinity,
           // height: Get.height,
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               iconWithTitle(func: () {}, text: 'Community',),
@@ -83,33 +82,33 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     prefixIcon: Container(
                       width: 15,
                       height: 15,
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       child: Image.asset(
                         'assets/search.png',
                         fit: BoxFit.cover,
                       ),
                     ),
                     hintText: 'Austin,USA',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 
               Obx(()=> GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 30,
                     childAspectRatio: 0.53),
                 shrinkWrap: true,
                 itemCount: dataController.filteredEvents.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) {
 
 
@@ -170,13 +169,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     tags = [];
                   }
 
-                  if(tags.length ==0){
+                  if(tags.isEmpty){
                     tagString = dataController.filteredEvents.value[i]
                         .get('description');
                   }else{
-                    tags.forEach((element) {
+                    for (var element in tags) {
                       tagString += "#$element, ";
-                    });
+                    }
                   }
 
 
@@ -200,26 +199,26 @@ class _CommunityScreenState extends State<CommunityScreen> {
                           userProfile(
                             path: userImage,
                             title: userName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff333333),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Row(
                             children: [
                               Image.asset('assets/location.png'),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Expanded(
                                 child: myText(
                                   text: location,
 
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
                                     color: Color(0xff303030),
@@ -228,7 +227,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           ClipRRect(
@@ -243,25 +242,25 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
 
 
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           myText(
                             text: eventName,
 
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           myText(
                             text: tagString,
 
 
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                               color: Colors.blue,

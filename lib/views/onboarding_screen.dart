@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:event_management/views/auth/login_signup.dart';
 
 class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
 
@@ -17,32 +19,32 @@ class OnBoardingScreen extends StatelessWidget {
 
           children: [
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
-            Text("Welcome to EMS!",style: TextStyle(
+            const Text("Welcome to EMS!",style: TextStyle(
               color: Colors.black,
               fontSize: 27,
               fontWeight: FontWeight.w700,
             ),),
 
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
 
-            Text("Event Management System",style: TextStyle(fontSize: 16),),
+            const Text("Event Management System",style: TextStyle(fontSize: 16),),
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
             Padding(
-              padding: EdgeInsets.only(left: 15,right: 15),
+              padding: const EdgeInsets.only(left: 15,right: 15),
               child: Image.asset('assets/onboardIcon.png'),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
@@ -51,7 +53,7 @@ class OnBoardingScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
 
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
@@ -68,7 +70,7 @@ class OnBoardingScreen extends StatelessWidget {
 
 
 
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 15,right: 15),
                       child: Text("The social media platform designed to get you offline",
                         textAlign: TextAlign.center,
@@ -80,7 +82,7 @@ class OnBoardingScreen extends StatelessWidget {
 
 
 
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 15,right: 15),
                       child: Text("EMS is an app where users can leverage their social network to create, discover, share, and monetize events or services.",
                         textAlign: TextAlign.center,
@@ -96,7 +98,7 @@ class OnBoardingScreen extends StatelessWidget {
 
 
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 15,
                           right: 15
                       ),
@@ -105,10 +107,10 @@ class OnBoardingScreen extends StatelessWidget {
                         color: Colors.white,
                         elevation: 2,
                         onPressed: (){
-                          Get.to(()=> LoginView());
+                          Get.to(()=> const LoginView());
                         },
 
-                        child: Text("Get Started",
+                        child: const Text("Get Started",
                           style: TextStyle(
                               fontSize: 18,
                               color: Color(0xff274560),

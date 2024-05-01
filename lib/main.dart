@@ -1,4 +1,4 @@
-import 'package:event_management/services/notification_service.dart';
+//import 'package:event_management/services/notification_service.dart';
 import 'package:event_management/utils/app_constants.dart';
 import 'package:event_management/views/bottom_nav_bar/bottom_bar_view.dart';
 import 'package:event_management/views/onboarding_screen.dart';
@@ -20,13 +20,15 @@ void main() async{
 
   Stripe.publishableKey = publishableKey;
   await Firebase.initializeApp();
-  LocalNotificationService.initialize();
+  //LocalNotificationService.initialize();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
 
 
 
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Flutter Demo',
-      home: FirebaseAuth.instance.currentUser == null? OnBoardingScreen() : BottomBarView(),
+      home: FirebaseAuth.instance.currentUser == null? const OnBoardingScreen() : const BottomBarView(),
     );
   }
 }

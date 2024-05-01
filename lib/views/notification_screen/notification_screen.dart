@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +8,8 @@ import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
 import 'package:timeago/timeago.dart' as timeAgo;
 class UserNotificationScreen extends StatefulWidget {
+  const UserNotificationScreen({super.key});
+
   @override
   _UserNotificationScreenState createState() => _UserNotificationScreenState();
 }
@@ -24,18 +25,18 @@ class _UserNotificationScreenState extends State<UserNotificationScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: iconWithTitle(func: () {
                   Get.back();
                 }, text: 'Notifications'),
               ),
 
               Container(
-                  color: Color(0xffEEEEEE).withOpacity(0.9),
-                  padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+                  color: const Color(0xffEEEEEE).withOpacity(0.9),
+                  padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                   child: StreamBuilder<QuerySnapshot>(builder: (ctx,snap){
                     if(!snap.hasData){
-                      return Center(child: CircularProgressIndicator(),);
+                      return const Center(child: CircularProgressIndicator(),);
                     }
 
                     final List<DocumentSnapshot> data = snap.data!.docs;
@@ -73,9 +74,9 @@ class _UserNotificationScreenState extends State<UserNotificationScreen> {
                       }
 
                       return buildTile(name,title,date,image);
-                    },itemCount: data.length,shrinkWrap: true,physics: NeverScrollableScrollPhysics(),);
+                    },itemCount: data.length,shrinkWrap: true,physics: const NeverScrollableScrollPhysics(),);
                   },stream: FirebaseFirestore.instance.collection('notifications').doc(FirebaseAuth.instance.currentUser!.uid).collection('myNotifications').snapshots(),)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],
@@ -97,7 +98,7 @@ class _UserNotificationScreenState extends State<UserNotificationScreen> {
                 radius: 25,
                 backgroundImage: NetworkImage(image),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Expanded(
@@ -126,7 +127,7 @@ class _UserNotificationScreenState extends State<UserNotificationScreen> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(left: 73),
+            padding: const EdgeInsets.only(left: 73),
             child: Text(
               timeAgo.format(subTitle),
               style: GoogleFonts.poppins(
@@ -146,7 +147,7 @@ class _UserNotificationScreenState extends State<UserNotificationScreen> {
 
   buildDate(String time) {
     return Container(
-      margin: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(left: 20),
       child: Text(
         time,
         style: GoogleFonts.poppins(

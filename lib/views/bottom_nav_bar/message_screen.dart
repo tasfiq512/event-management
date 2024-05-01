@@ -4,10 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../model/message_model.dart';
-import '../chat/chat_room_screen.dart';
+//import '../chat/chat_room_screen.dart';
 
 class MessageScreen extends StatefulWidget {
+  const MessageScreen({super.key});
+
   @override
   _MessageScreenState createState() => _MessageScreenState();
 }
@@ -30,7 +31,7 @@ class _MessageScreenState extends State<MessageScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -49,12 +50,12 @@ class _MessageScreenState extends State<MessageScreen> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       height: screenheight * 0.09,
                       width: screenwidth * 0.9,
                       //decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.grey),
+                        style: const TextStyle(color: Colors.grey),
                         onChanged: (String input){
                           if(input.isEmpty){
                             dataController.filteredUsers.assignAll(dataController.allUsers);
@@ -83,7 +84,7 @@ class _MessageScreenState extends State<MessageScreen> {
                         },
                         decoration: InputDecoration(
                           errorBorder: InputBorder.none,
-                          errorStyle: TextStyle(fontSize: 0, height: 0),
+                          errorStyle: const TextStyle(fontSize: 0, height: 0),
                           focusedErrorBorder: InputBorder.none,
                           fillColor: Colors.deepOrangeAccent[2],
                           filled: true,
@@ -97,9 +98,9 @@ class _MessageScreenState extends State<MessageScreen> {
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(10)),
                           hintText: "Search",
-                          prefixIcon: Icon(Icons.search),
+                          prefixIcon: const Icon(Icons.search),
                           hintStyle:
-                          TextStyle(color: Colors.black, fontSize: 17),
+                          const TextStyle(color: Colors.black, fontSize: 17),
                         ),
                       ),
                     ),
@@ -107,9 +108,9 @@ class _MessageScreenState extends State<MessageScreen> {
                 ),
               ),
               Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Obx(()=> ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       itemCount: dataController.filteredUsers.length,
                       shrinkWrap: true,
@@ -153,10 +154,10 @@ class _MessageScreenState extends State<MessageScreen> {
                               chatRoomId = '${dataController.filteredUsers[index].id}-$myUid';
                             }
 
-                            Get.to(() => Chat(groupId: chatRoomId,name: name,image: image,fcmToken: fcmToken,uid: dataController.filteredUsers[index].id,));
+                            //Get.to(() => Chat(groupId: chatRoomId,name: name,image: image,fcmToken: fcmToken,uid: dataController.filteredUsers[index].id,));
                           },
                           child: Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20),
                             width: screenwidth * 0.01,
                             height: screenheight * 0.08,
                             decoration: BoxDecoration(
@@ -183,15 +184,15 @@ class _MessageScreenState extends State<MessageScreen> {
                                       ),
                                       Text(
                                         name,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(
                                         height: screenheight * 0.001,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 0),
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 0),
                                         child: Text(''),
                                       )
                                     ],
@@ -201,7 +202,7 @@ class _MessageScreenState extends State<MessageScreen> {
                                   width: screenwidth * 0.05,
                                 ),
                                 Image(
-                                  image: AssetImage('assets/img_8.png'),
+                                  image: const AssetImage('assets/img_8.png'),
                                   width: screenwidth * 0.1,
                                   height: screenheight * 0.1,
                                 ),

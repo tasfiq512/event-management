@@ -1,10 +1,8 @@
 
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_management/controller/data_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,9 +31,9 @@ Widget EventsFeed() {
 
 
 
-  return Obx(()=> dataController.isEventsLoading.value? Center(child: CircularProgressIndicator(),) : ListView.builder(
+  return Obx(()=> dataController.isEventsLoading.value? const Center(child: CircularProgressIndicator(),) : ListView.builder(
     shrinkWrap: true,
-    physics: NeverScrollableScrollPhysics(),
+    physics: const NeverScrollableScrollPhysics(),
     itemBuilder: (ctx,i){
       return EventItem(dataController.allEvents[i]);
     },itemCount: dataController.allEvents.length,));
@@ -86,16 +84,16 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
   }
 
   return Container(
-    padding: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 10),
+    padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 10),
     decoration: BoxDecoration(
       color: AppColors.white,
       borderRadius: BorderRadius.circular(17),
       boxShadow: [
         BoxShadow(
-          color: Color(393939).withOpacity(0.15),
+          color: const Color(0x000602d3).withOpacity(0.15),
           spreadRadius: 0.1,
           blurRadius: 2,
-          offset: Offset(0, 0), // changes position of shadow
+          offset: const Offset(0, 0), // changes position of shadow
         ),
       ],
     ),
@@ -120,7 +118,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
             //color: Colors.red,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -134,23 +132,23 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
                 // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    border: Border.all(color: Color(0xffADD8E6))),
+                    border: Border.all(color: const Color(0xffADD8E6))),
                 child: Text(
                   '${dateInformation[0]}-${dateInformation[1]}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 18,
               ),
               Text(
                 text,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               ),
-              Spacer(),
+              const Spacer(),
               InkWell(
                 onTap: (){
 
@@ -167,7 +165,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
 
 
                 },
-                child: Container(
+                child: SizedBox(
                   width: 16,
                   height: 19,
                   child: Image.asset(
@@ -184,7 +182,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
           children: [
 
 
-            Container(
+            SizedBox(
 
                 width: Get.width*0.6,
                 height: 50,
@@ -204,7 +202,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
 
 
                   return Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(left: 10),
                     child: CircleAvatar(
                       minRadius: 13,
                       backgroundImage: NetworkImage(image),
@@ -222,7 +220,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
         ),
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 68,
             ),
             InkWell(
@@ -247,14 +245,14 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xffD24698).withOpacity(0.02),
+                      color: const Color(0xffD24698).withOpacity(0.02),
                     )
                   ],
                 ),
                 child: Icon(Icons.favorite,size: 14,color: userLikes.contains(FirebaseAuth.instance.currentUser!.uid)? Colors.red:Colors.black,),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 3,
             ),
             Text(
@@ -265,11 +263,11 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Container(
-              padding: EdgeInsets.all(0.5),
+              padding: const EdgeInsets.all(0.5),
               width: 17,
               height: 17,
               child: Image.asset(
@@ -277,7 +275,7 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
                 color: AppColors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Text(
@@ -288,11 +286,11 @@ Widget buildCard({String? image, text, Function? func,DocumentSnapshot? eventDat
                 color: AppColors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Container(
-              padding: EdgeInsets.all(0.5),
+              padding: const EdgeInsets.all(0.5),
               width: 16,
               height: 16,
               child: Image.asset(
@@ -341,7 +339,7 @@ EventItem(DocumentSnapshot event) {
         children: [
           InkWell(
             onTap: () {
-              Get.to(() => ProfileScreen());
+              Get.to(() => const ProfileScreen());
             },
             child: CircleAvatar(
               radius: 25,
@@ -349,7 +347,7 @@ EventItem(DocumentSnapshot event) {
               backgroundImage: NetworkImage(image),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Text(
@@ -369,7 +367,7 @@ EventItem(DocumentSnapshot event) {
           func: () {
             Get.to(() => EventPageView(event,user));
           }),
-      SizedBox(
+      const SizedBox(
         height: 15,
       ),
     ],
@@ -408,17 +406,17 @@ EventsIJoined() {
           Container(
             width: 50,
             height: 50,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Image.asset(
               'assets/doneCircle.png',
               fit: BoxFit.cover,
               color: AppColors.blue,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
-          Text(
+          const Text(
             'You\'re all caught up!',
             style: TextStyle(
               fontSize: 18,
@@ -436,10 +434,10 @@ EventsIJoined() {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 10,
-            offset: Offset(0, 1), // changes position of shadow
+            offset: const Offset(0, 1), // changes position of shadow
           ),
         ], color: Colors.white, borderRadius: BorderRadius.circular(8)),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         width: double.infinity,
         child: Column(
           children: [
@@ -449,12 +447,12 @@ EventsIJoined() {
                   backgroundImage: NetworkImage(userImage),
                   radius: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   userName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -462,12 +460,12 @@ EventsIJoined() {
               ],
             ),
             Divider(
-              color: Color(0xff918F8F).withOpacity(0.2),
+              color: const Color(0xff918F8F).withOpacity(0.2),
             ),
-            Obx(()=> dataController.isEventsLoading.value? Center(child: CircularProgressIndicator(),) :  ListView.builder(
+            Obx(()=> dataController.isEventsLoading.value? const Center(child: CircularProgressIndicator(),) :  ListView.builder(
               itemCount: dataController.joinedEvents.length,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, i) {
 
 
@@ -475,7 +473,7 @@ EventsIJoined() {
 
                 String date = dataController.joinedEvents[i].get('date');
 
-                date = date.split('-')[0] + '-' + date.split('-')[1];
+                date = '${date.split('-')[0]}-${date.split('-')[1]}';
 
 
 
@@ -502,7 +500,7 @@ EventsIJoined() {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
-                                color: Color(0xffADD8E6),
+                                color: const Color(0xffADD8E6),
                               ),
                             ),
                             child: Text(
@@ -530,7 +528,7 @@ EventsIJoined() {
                     ),
 
 
-                    Container(
+                    SizedBox(
 
                         width: Get.width*0.6,
                         height: 50,
@@ -550,7 +548,7 @@ EventsIJoined() {
 
 
                           return Container(
-                            margin: EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(left: 10),
                             child: CircleAvatar(
                               minRadius: 13,
                               backgroundImage: NetworkImage(image),
@@ -570,7 +568,7 @@ EventsIJoined() {
           ],
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
     ],

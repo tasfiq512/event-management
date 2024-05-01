@@ -1,7 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_management/controller/data_controller.dart';
-import 'package:event_management/utils/date_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,13 +8,12 @@ import 'package:get/get.dart';
 import '../../utils/app_color.dart';
 import '../check_out/check_out_screen.dart';
 import '../invite_guest/invite_guest_screen.dart';
-import 'package:intl/intl.dart';
 class EventPageView extends StatefulWidget {
 
 
   DocumentSnapshot eventData,user;
 
-  EventPageView(this.eventData,this.user);
+  EventPageView(this.eventData,this.user, {super.key});
 
 
 
@@ -72,9 +70,9 @@ class _EventPageViewState extends State<EventPageView> {
 
     String tagsCollectively = '';
 
-    tags.forEach((e){
+    for (var e in tags) {
       tagsCollectively += '#$e ';
-    });
+    }
 
     int likes = 0;
     int comments = 0;
@@ -106,7 +104,7 @@ class _EventPageViewState extends State<EventPageView> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -115,7 +113,7 @@ class _EventPageViewState extends State<EventPageView> {
                   Get.back();
                 },
                 child: Container(
-                  margin: EdgeInsets.only(top: 50, bottom: 20),
+                  margin: const EdgeInsets.only(top: 50, bottom: 20),
                   width: 30,
                   height: 30,
                   child: Image.asset(
@@ -131,7 +129,7 @@ class _EventPageViewState extends State<EventPageView> {
                     ),
                     radius: 20,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -139,15 +137,15 @@ class _EventPageViewState extends State<EventPageView> {
                     children: [
                       Text(
                         '${widget.user.get('first')} ${widget.user.get('last')}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 2,
                       ),
                       Text(
                         "${widget.user.get('location')}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                           color: Colors.grey,
                           fontWeight: FontWeight.w400,
@@ -155,28 +153,28 @@ class _EventPageViewState extends State<EventPageView> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                     decoration: BoxDecoration(
-                        color: Color(0xffEEEEEE),
+                        color: const Color(0xffEEEEEE),
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
                       children: [
                         Text(
                           '${widget.eventData.get('event')}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Icon(Icons.arrow_drop_down),
+                        const Icon(Icons.arrow_drop_down),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -184,18 +182,18 @@ class _EventPageViewState extends State<EventPageView> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Color(0xff0000FF), width: 1.5),
+                      border: Border.all(color: const Color(0xff0000FF), width: 1.5),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                     child: Text(
                       '${widget.eventData.get('start_time')}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -205,12 +203,12 @@ class _EventPageViewState extends State<EventPageView> {
                         color: AppColors.black,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     "${widget.eventData.get('date')}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 13,
                       color: Colors.black,
                       fontWeight: FontWeight.w300,
@@ -218,7 +216,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -226,7 +224,7 @@ class _EventPageViewState extends State<EventPageView> {
                   Image.asset(
                     'assets/location.png',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
@@ -239,7 +237,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -253,7 +251,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -261,7 +259,7 @@ class _EventPageViewState extends State<EventPageView> {
                   children: [
 
 
-                    Container(
+                    SizedBox(
                       width: Get.width*0.6,
                       height: 50,
                       child: ListView.builder(itemBuilder: (ctx,index){
@@ -280,7 +278,7 @@ class _EventPageViewState extends State<EventPageView> {
 
 
                         return Container(
-                          margin: EdgeInsets.only(left: 10),
+                          margin: const EdgeInsets.only(left: 10),
                           child: CircleAvatar(
                             minRadius: 13,
                             backgroundImage: NetworkImage(image),
@@ -290,13 +288,13 @@ class _EventPageViewState extends State<EventPageView> {
                     ),
 
 
-                    Spacer(),
+                    const Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
                           "\$4${widget.eventData.get('price')}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
@@ -304,7 +302,7 @@ class _EventPageViewState extends State<EventPageView> {
                         ),
                         Text(
                           "${widget.eventData.get('max_entries')} spots left!",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14,
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
@@ -315,7 +313,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               RichText(
@@ -323,7 +321,7 @@ class _EventPageViewState extends State<EventPageView> {
 
                     TextSpan(
                       text: widget.eventData.get('description'),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
@@ -331,7 +329,7 @@ class _EventPageViewState extends State<EventPageView> {
                     ),
 
                   ])),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -339,14 +337,14 @@ class _EventPageViewState extends State<EventPageView> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        Get.to(() => Inviteguest());
+                        Get.to(() => const Inviteguest());
                       },
                       child: Container(
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(13),
                             color: Colors.blue.withOpacity(0.9)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "invite Friends",
                             style: TextStyle(
@@ -359,7 +357,7 @@ class _EventPageViewState extends State<EventPageView> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -377,13 +375,13 @@ class _EventPageViewState extends State<EventPageView> {
                                 spreadRadius: 0.1,
                                 blurRadius: 60,
                                 offset:
-                                Offset(0, 1), // changes position of shadow
+                                const Offset(0, 1), // changes position of shadow
                               ),
                             ],
                             borderRadius: BorderRadius.circular(13)),
                         padding:
-                        EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Center(
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: const Center(
                           child: Text(
                             'Join',
                             style: TextStyle(
@@ -397,7 +395,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -406,7 +404,7 @@ class _EventPageViewState extends State<EventPageView> {
                     child: Text(
                       tagsCollectively,
                       maxLines: 2,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
                       ),
@@ -414,27 +412,27 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 30,
                     height: 30,
                     child: Image.asset('assets/heart.png'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     likes.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Image.asset(
@@ -442,17 +440,17 @@ class _EventPageViewState extends State<EventPageView> {
                     width: 16,
                     height: 16,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     comments.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Image.asset(
@@ -460,7 +458,7 @@ class _EventPageViewState extends State<EventPageView> {
                     height: 16,
                     width: 16,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: (){
 
@@ -497,7 +495,7 @@ class _EventPageViewState extends State<EventPageView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
 

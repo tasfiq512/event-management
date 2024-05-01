@@ -9,6 +9,8 @@ import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -39,15 +41,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Choose Image Source'),
+          title: const Text('Choose Image Source'),
           content: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
                 onTap: () async {
-                  final ImagePicker _picker = ImagePicker();
+                  final ImagePicker picker = ImagePicker();
                   final XFile? image =
-                  await _picker.pickImage(source: ImageSource.camera);
+                  await picker.pickImage(source: ImageSource.camera);
                   if (image != null) {
                     profileImage = File(image.path);
                     setState(() {});
@@ -55,18 +57,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
 
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.camera_alt,
                   size: 30,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               InkWell(
                 onTap: () async {
-                  final ImagePicker _picker = ImagePicker();
-                  final XFile? image = await _picker.pickImage(
+                  final ImagePicker picker = ImagePicker();
+                  final XFile? image = await picker.pickImage(
                     source: ImageSource.gallery,
                   );
                   if (image != null) {
@@ -130,12 +132,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     width: 120,
                     height: 120,
-                    margin: EdgeInsets.only(top: 35),
-                    padding: EdgeInsets.all(2),
+                    margin: const EdgeInsets.only(top: 35),
+                    padding: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
                       color: AppColors.blue,
                       borderRadius: BorderRadius.circular(70),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [
                           Color(0xff7DDCFB),
                           Color(0xffBC67F2),
@@ -147,13 +149,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(2),
+                          padding: const EdgeInsets.all(2),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(70),
                           ),
                           child: profileImage == null
-                              ? CircleAvatar(
+                              ? const CircleAvatar(
                             radius: 56,
                             backgroundColor: Colors.white,
                             child: Icon(
@@ -218,18 +220,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return '';
                       }
                     }),
-                Container(
+                SizedBox(
                   height: 48,
                   child: TextField(
                     controller: dob,
                     // enabled: false,
                     onTap: () {
-                      FocusScope.of(context).requestFocus(new FocusNode());
+                      FocusScope.of(context).requestFocus(FocusNode());
 
                       _selectDate(context);
                     },
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(top: 10, left: 10),
+                      contentPadding: const EdgeInsets.only(top: 10, left: 10),
                       suffixIcon: Image.asset(
                         'assets/calender.png',
                         cacheHeight: 20,
@@ -284,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ],
                 ),
-                Obx(()=> authController!.isProfileInformationLoading.value? Center(child: CircularProgressIndicator(),) :Container(
+                Obx(()=> authController!.isProfileInformationLoading.value? const Center(child: CircularProgressIndicator(),) :Container(
                   height: 50,
                   margin: EdgeInsets.only(top: Get.height * 0.02),
                   width: Get.width,
@@ -324,11 +326,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                Container(
+                SizedBox(
                     width: Get.width * 0.8,
                     child: RichText(
                       textAlign: TextAlign.center,
-                      text: TextSpan(children: [
+                      text: const TextSpan(children: [
                         TextSpan(
                             text: 'By signing up, you agree our ',
                             style: TextStyle(

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_management/controller/data_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +9,8 @@ import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -24,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   List<Ticketdetail> ticket = [
     Ticketdetail(
-        color: Color(0xffADD8E6),
+        color: const Color(0xffADD8E6),
         date: 'Feb 28',
         range: '10-11',
         name: 'BRUNCH',
@@ -40,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         rate: '140',
         share: 'assets/send.png'),
     Ticketdetail(
-        color: Color(0xff0000FF),
+        color: const Color(0xff0000FF),
         date: 'may 14',
         range: '6-7:30',
         name: 'BRUNCH',
@@ -132,13 +133,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
 
                         },
-                        child: Image(
+                        child: const Image(
                           image: AssetImage('assets/sms.png'),
                           width: 28,
                           height: 25,
                         ),
                       ),
-                      Image(
+                      const Image(
                         image: AssetImage('assets/menu.png'),
                         width: 23.33,
                         height: 19,
@@ -149,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Align(
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 90, horizontal: 20),
+                  margin: const EdgeInsets.symmetric(vertical: 90, horizontal: 20),
                   width: Get.width,
                   height: isNotEditable? 240: 310,
                   decoration: BoxDecoration(
@@ -160,7 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.grey.withOpacity(0.15),
                         spreadRadius: 2,
                         blurRadius: 3,
-                        offset: Offset(0, 0), // changes position of shadow
+                        offset: const Offset(0, 0), // changes position of shadow
                       ),
                     ],
                   ),
@@ -177,12 +178,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Container(
                         width: 120,
                         height: 120,
-                        margin: EdgeInsets.only(top: 35),
-                        padding: EdgeInsets.all(2),
+                        margin: const EdgeInsets.only(top: 35),
+                        padding: const EdgeInsets.all(2),
                         decoration: BoxDecoration(
                           color: AppColors.blue,
                           borderRadius: BorderRadius.circular(70),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [
                               Color(0xff7DDCFB),
                               Color(0xffBC67F2),
@@ -194,12 +195,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(70),
                               ),
-                              child: image.isEmpty? CircleAvatar(
+                              child: image.isEmpty? const CircleAvatar(
                                   radius: 56,
                                   backgroundColor: Colors.white,
                                   backgroundImage: AssetImage(
@@ -221,7 +222,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     isNotEditable?Text(
@@ -232,27 +233,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ):
-                    Container(
+                    SizedBox(
                       width: Get.width*0.6,
                       child: Row(
                         children: [
                           Expanded(child: TextField(
                             controller: firstNameController,
                             textAlign: TextAlign.center,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'First Name',
 
                             ),
                           ),),
 
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
 
                           Expanded(child: TextField(
                             controller: lastNameController,
                             textAlign: TextAlign.center,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'Last Name',
 
                             ),
@@ -261,63 +262,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     isNotEditable? Text(
-                      "${locationController.text}",
-                      style: TextStyle(
+                      locationController.text,
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff918F8F),
                       ),
                     ):
-                    Container(
+                    SizedBox(
                       width: Get.width*0.6,
                       child: TextField(
                         controller: locationController,
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Location',
 
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
-                    isNotEditable?Container(
+                    isNotEditable?SizedBox(
                       width: 270,
                       child: Text(
-                        '${descriptionController.text}',
+                        descriptionController.text,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           letterSpacing: -0.3,
                           fontSize: 12,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
-                    ): Container(
+                    ): SizedBox(
                       width: Get.width*0.6,
                       child: TextField(
                         controller: descriptionController,
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Description',
 
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
                       width: double.infinity,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      padding: EdgeInsets.symmetric(horizontal: 14),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
                             children: [
                               Text(
-                                "${followers}",
+                                "$followers",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: AppColors.black,
@@ -339,12 +340,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Container(
                             width: 1,
                             height: 35,
-                            color: Color(0xff918F8F).withOpacity(0.5),
+                            color: const Color(0xff918F8F).withOpacity(0.5),
                           ),
                           Column(
                             children: [
                               Text(
-                                "${following}",
+                                "$following",
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: AppColors.black,
@@ -362,12 +363,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ],
                           ),
-                          Container(
+                          SizedBox(
                             height: 40,
                             width: screenwidth * 0.25,
                             child: TextButton(
                               style: TextButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(15),
                                     ),
@@ -465,7 +466,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     //     ],
                     //   ),
                     // ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Column(
@@ -474,7 +475,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: 20),
+                              margin: const EdgeInsets.only(left: 20),
                               width: 53,
                               height: 53,
                               child: Image.asset(
@@ -482,43 +483,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              margin: const EdgeInsets.only(left: 15),
                               width: 53,
                               height: 53,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(36),
                                 color: Colors.white,
                               ),
-                              child: Image(
+                              child: const Image(
                                   image: AssetImage('assets/Ellipse 984.png')),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              margin: const EdgeInsets.only(left: 15),
                               width: 53,
                               height: 53,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(36),
                                 color: Colors.white,
                               ),
-                              child: Image(
+                              child: const Image(
                                   image: AssetImage('assets/Ellipse 985.png')),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              margin: const EdgeInsets.only(left: 15),
                               width: 53,
                               height: 53,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(36),
                                 color: Colors.white,
                               ),
-                              child: Image(
+                              child: const Image(
                                   image: AssetImage('assets/Ellipse 986.png')),
                             ),
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 30, top: 10),
-                          child: Text(
+                          margin: const EdgeInsets.only(left: 30, top: 10),
+                          child: const Text(
                             'NEW',
                             style: TextStyle(
                               fontSize: 12,
@@ -530,7 +531,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
                       child: DefaultTabController(
                         length: 2,
                         initialIndex: 0,
@@ -538,7 +539,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
                                     color: Colors.black,
@@ -548,7 +549,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               child: TabBar(
                                 indicatorColor: Colors.black,
-                                labelPadding: EdgeInsets.symmetric(
+                                labelPadding: const EdgeInsets.symmetric(
                                   horizontal: 20.0,
                                   vertical: 10,
                                 ),
@@ -568,7 +569,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Container(
                               height: screenheight * 0.46,
                               //height of TabBarView
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 border: Border(
                                   top: BorderSide(
                                     color: Colors.white,
@@ -577,11 +578,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                               child: TabBarView(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 children: <Widget>[
                                   ListView.builder(
                                       shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       scrollDirection: Axis.vertical,
                                       itemCount: ticket.length,
                                       itemBuilder: (context, index) {
@@ -590,7 +591,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           // Get.to(()=>Detailproduct(record: popular[index],));
                                           // },
                                           Container(
-                                            margin: EdgeInsets.only(top: 20),
+                                            margin: const EdgeInsets.only(top: 20),
                                             width: 388,
                                             height: 130,
                                             decoration: BoxDecoration(
@@ -603,13 +604,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       .withOpacity(0.15),
                                                   spreadRadius: 2,
                                                   blurRadius: 3,
-                                                  offset: Offset(0,
+                                                  offset: const Offset(0,
                                                       0), // changes position of shadow
                                                 ),
                                               ],
                                             ),
                                             child: Container(
-                                              margin: EdgeInsets.only(
+                                              margin: const EdgeInsets.only(
                                                   top: 10, left: 10),
                                               child: Row(
                                                 crossAxisAlignment:
@@ -618,7 +619,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   Container(
                                                     width: 40,
                                                     height: 41,
-                                                    padding: EdgeInsets.all(1),
+                                                    padding: const EdgeInsets.all(1),
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                       BorderRadius.circular(
@@ -637,7 +638,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         myText(
                                                           text:
                                                           ticket[index].range,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:
                                                             FontWeight.w500,
@@ -646,7 +647,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         myText(
                                                           text:
                                                           ticket[index].date,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:
                                                             FontWeight.w400,
@@ -655,7 +656,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       ],
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 10,
                                                   ),
                                                   Column(
@@ -663,83 +664,83 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     CrossAxisAlignment.start,
                                                     children: [
                                                       Text(
-                                                        '${ticket[index].name}',
-                                                        style: TextStyle(
+                                                        ticket[index].name,
+                                                        style: const TextStyle(
                                                           fontSize: 15,
                                                           fontWeight:
                                                           FontWeight.bold,
                                                         ),
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 15,
                                                       ),
                                                       Row(
                                                         children: [
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img1}'),
+                                                                ticket[index].img1),
                                                             width: 27,
                                                             height: 27,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img2}'),
+                                                                ticket[index].img2),
                                                             width: 27,
                                                             height: 27,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img3}'),
+                                                                ticket[index].img3),
                                                             width: 27,
                                                             height: 27,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img4}'),
+                                                                ticket[index].img4),
                                                             width: 27,
                                                             height: 27,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img5}'),
+                                                                ticket[index].img5),
                                                             width: 27,
                                                             height: 27,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].img6}'),
+                                                                ticket[index].img6),
                                                             width: 27,
                                                             height: 27,
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 10,
                                                       ),
                                                       Row(
                                                         children: [
-                                                          Container(
+                                                          SizedBox(
                                                             height: 30,
                                                             child: Image.asset(
                                                               ticket[index].heart,
                                                             ),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 1,
                                                           ),
                                                           Padding(
@@ -748,8 +749,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                 .only(
                                                                 left: 10),
                                                             child: Text(
-                                                              '${ticket[index].count}',
-                                                              style: TextStyle(
+                                                              ticket[index].count,
+                                                              style: const TextStyle(
                                                                 fontSize: 13,
                                                                 fontWeight:
                                                                 FontWeight
@@ -757,12 +758,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                               ),
                                                             ),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 23,
                                                           ),
                                                           Image(
                                                             image: AssetImage(
-                                                                '${ticket[index].message}'),
+                                                                ticket[index].message),
                                                             width: 16,
                                                             height: 16,
                                                           ),
@@ -772,21 +773,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                 .only(
                                                                 left: 10),
                                                             child: Text(
-                                                              '${ticket[index].rate}',
-                                                              style: TextStyle(
+                                                              ticket[index].rate,
+                                                              style: const TextStyle(
                                                                   fontSize: 13,
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .bold),
                                                             ),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 27,
                                                           ),
                                                           Container(
                                                               child: Image(
                                                                 image: AssetImage(
-                                                                    '${ticket[index].share}'),
+                                                                    ticket[index].share),
                                                                 width: 15,
                                                                 height: 15,
                                                               )),
@@ -800,7 +801,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           );
                                       }),
                                   Container(
-                                    child: Center(
+                                    child: const Center(
                                       child: Text('Tab 2',
                                           style: TextStyle(
                                               fontSize: 22,
@@ -820,7 +821,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  margin: EdgeInsets.only(top: 105, right: 35),
+                  margin: const EdgeInsets.only(top: 105, right: 35),
 
                   child: InkWell
                     (
@@ -851,9 +852,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     },
                     child: isNotEditable? Image(
-                      image: AssetImage('assets/edit.png'),
+                      image: const AssetImage('assets/edit.png'),
                       width: screenwidth * 0.04,
-                    ): Icon(Icons.check,color: Colors.black,),
+                    ): const Icon(Icons.check,color: Colors.black,),
                   ),
                 ),
               ),

@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:event_management/services/payment_service/payment_service.dart';
+//import 'package:event_management/services/payment_service/payment_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
@@ -11,7 +9,7 @@ import '../../widgets/my_widgets.dart';
 class CheckOutView extends StatefulWidget {
   DocumentSnapshot? eventDoc;
 
-  CheckOutView(this.eventDoc);
+  CheckOutView(this.eventDoc, {super.key});
 
 
   @override
@@ -63,11 +61,11 @@ class _CheckOutViewState extends State<CheckOutView> {
       body: SingleChildScrollView(
         child: Container(
           // height: Get.height,
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -78,8 +76,8 @@ class _CheckOutViewState extends State<CheckOutView> {
                     child: Container(
                       width: 27,
                       height: 27,
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/circle.png'),
                         ),
@@ -100,13 +98,13 @@ class _CheckOutViewState extends State<CheckOutView> {
                       ),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 1,
                     child: Text(''),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
@@ -119,7 +117,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                     BoxShadow(
                       blurRadius: 2,
                       spreadRadius: 1,
-                      color: Color(0xff393939).withOpacity(0.15),
+                      color: const Color(0xff393939).withOpacity(0.15),
                     ),
                   ],
                 ),
@@ -129,7 +127,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                       width: 100,
                       height: 150,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                         ),
@@ -140,7 +138,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -156,7 +154,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                                     color: AppColors.black,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 25,
                                 ),
                                 myText(
@@ -170,12 +168,12 @@ class _CheckOutViewState extends State<CheckOutView> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: 11.67,
                                 height: 15,
                                 child: Image.asset(
@@ -183,19 +181,19 @@ class _CheckOutViewState extends State<CheckOutView> {
                                   fit: BoxFit.fill,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               myText(
                                 text: widget.eventDoc!.get('location'),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w300,
                                 ),
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 7,
                           ),
                           myText(
@@ -217,7 +215,7 @@ class _CheckOutViewState extends State<CheckOutView> {
               ),
               myText(
                 text: 'Payment Method',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 16,
                 ),
@@ -226,7 +224,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                 children: [
                   Row(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 16,
                         height: 12,
                         child: Image.asset(
@@ -234,19 +232,19 @@ class _CheckOutViewState extends State<CheckOutView> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       myText(
                         text: 'Add Card detail',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Radio(
                     value: 0,
                     groupValue: selectedRadio,
@@ -271,7 +269,7 @@ class _CheckOutViewState extends State<CheckOutView> {
                         },
                         decoration: InputDecoration(
                           hintText: 'Expiration date',
-                          contentPadding: EdgeInsets.only(top: 10, left: 10),
+                          contentPadding: const EdgeInsets.only(top: 10, left: 10),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -292,12 +290,12 @@ class _CheckOutViewState extends State<CheckOutView> {
                 children: [
                   myText(
                     text: 'Other option',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Radio(
                     value: 1,
                     groupValue: selectedRadio,
@@ -310,13 +308,13 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     width: 48,
                     height: 34,
                     child: Image.asset(
@@ -326,12 +324,12 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                   myText(
                     text: 'Paypal',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Radio(
                     value: 2,
                     groupValue: selectedRadio,
@@ -344,13 +342,13 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     width: 48,
                     height: 34,
                     child: Image.asset(
@@ -360,12 +358,12 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                   myText(
                     text: 'Strip',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Radio(
                     value: 3,
                     groupValue: selectedRadio,
@@ -378,20 +376,20 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                 ],
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   myText(
                     text: 'Event Fee',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   myText(
                     text: '\$${widget.eventDoc!.get('price')}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
@@ -399,17 +397,17 @@ class _CheckOutViewState extends State<CheckOutView> {
                 ],
               ),
 
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   myText(
                     text: 'Total Ticket',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   myText(
                     text: '\$${int.parse(widget.eventDoc!.get('price')) + 2}',
                     style: TextStyle(
@@ -420,11 +418,11 @@ class _CheckOutViewState extends State<CheckOutView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 10),
+                margin: const EdgeInsets.only(bottom: 10),
                 height: 50,
                 width: double.infinity,
                 child: elevatedButton(
@@ -432,7 +430,7 @@ class _CheckOutViewState extends State<CheckOutView> {
 
 
                     if(selectedRadio == 3){
-                      makePayment(context,amount: '${int.parse(widget.eventDoc!.get('price')) + 2}',eventId: widget.eventDoc!.id);
+                      //makePayment(context,amount: '${int.parse(widget.eventDoc!.get('price')) + 2}',eventId: widget.eventDoc!.id);
                     }
 
                   },

@@ -7,10 +7,10 @@ import 'my_widgets.dart';
 
 Widget CustomAppBar(){
   return Container(
-    margin: EdgeInsets.symmetric(vertical: 15),
+    margin: const EdgeInsets.symmetric(vertical: 15),
     child: Row(
       children: [
-        Container(
+        SizedBox(
           width: 116,
           height: 17,
           child: myText(
@@ -19,13 +19,13 @@ Widget CustomAppBar(){
                   color: AppColors.blue,
                   fontWeight: FontWeight.bold,fontSize: 16)),
         ),
-        Spacer(),
-        Container(
+        const Spacer(),
+        SizedBox(
           width: 24,
           height: 22,
           child: InkWell(
             onTap: () {
-              Get.to(() => UserNotificationScreen());
+              Get.to(() => const UserNotificationScreen());
             },
             child: Image.asset('assets/Frame.png'),
           ),
@@ -35,7 +35,7 @@ Widget CustomAppBar(){
         ),
         InkWell(
           onTap: () {},
-          child: Container(
+          child: SizedBox(
             width: 22,
             height: 20,
             child: Image.asset(

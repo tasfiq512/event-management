@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:event_management/controller/auth_controller.dart';
 import 'package:event_management/views/profile/add_profile.dart';
@@ -10,7 +9,7 @@ import '../../utils/app_color.dart';
 import '../../widgets/my_widgets.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -61,7 +60,7 @@ class _LoginViewState extends State<LoginView> {
                 isSignUp
                     ? myText(
                   text: 'Sign Up',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w600,
                   ),
@@ -104,7 +103,7 @@ class _LoginViewState extends State<LoginView> {
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                Container(
+                SizedBox(
                   width: Get.width * 0.55,
                   child: TabBar(
                     labelPadding: EdgeInsets.all(Get.height * 0.01),
@@ -138,13 +137,13 @@ class _LoginViewState extends State<LoginView> {
                 SizedBox(
                   height: Get.height * 0.04,
                 ),
-                Container(
+                SizedBox(
                   width: Get.width,
                   height: Get.height * 0.6,
                   child: Form(
                     key: formKey,
                     child: TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       children: [
                         LoginWidget(),
                         SignUpWidget(),
@@ -209,7 +208,7 @@ class _LoginViewState extends State<LoginView> {
                 onTap: () {
                   Get.defaultDialog(
                       title: 'Forget Password?',
-                      content: Container(
+                      content: SizedBox(
                         width: Get.width,
                         child: Column(
                           children: [
@@ -220,7 +219,7 @@ class _LoginViewState extends State<LoginView> {
                                 controller: forgetEmailController
                             ),
 
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
 
@@ -228,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                               color: Colors.blue,
                               onPressed: (){
                                 authController.forgetPassword(forgetEmailController.text.trim());
-                              },child: Text("Sent"),minWidth: double.infinity,)
+                              },minWidth: double.infinity,child: const Text("Sent"),)
 
                           ],
                         ),
@@ -250,7 +249,7 @@ class _LoginViewState extends State<LoginView> {
               ),
             ],
           ),
-          Obx(()=> authController.isLoading.value? Center(child: CircularProgressIndicator(),) :Container(
+          Obx(()=> authController.isLoading.value? const Center(child: CircularProgressIndicator(),) :Container(
             height: 50,
             margin: EdgeInsets.symmetric(
                 vertical: Get.height * 0.04),
@@ -290,7 +289,7 @@ class _LoginViewState extends State<LoginView> {
                   text: 'assets/fb.png',
                   onPressed: (){
 
-                    Get.to(()=> ProfileScreen());
+                    Get.to(()=> const ProfileScreen());
 
                   }
               ),
@@ -369,7 +368,7 @@ class _LoginViewState extends State<LoginView> {
                 },
                 controller: confirmPasswordController
             ),
-            Obx(()=> authController.isLoading.value? Center(child: CircularProgressIndicator(),) : Container(
+            Obx(()=> authController.isLoading.value? const Center(child: CircularProgressIndicator(),) : Container(
               height: 50,
               margin: EdgeInsets.symmetric(
                 vertical: Get.height * 0.04,
@@ -418,11 +417,11 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            Container(
+            SizedBox(
                 width: Get.width * 0.8,
                 child: RichText(
                   textAlign: TextAlign.center,
-                  text: TextSpan(children: [
+                  text: const TextSpan(children: [
                     TextSpan(
                         text:
                         'By signing up, you agree our ',
